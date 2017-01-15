@@ -65,7 +65,7 @@ class AppContainer extends Component {
   renderRightElements() {
     return (
       <div>
-        <Avatar />
+        Right panel
       </div>
     )
   }
@@ -80,7 +80,7 @@ class AppContainer extends Component {
 
     return (
       <div>
-        <span>De Tipsters</span>
+        <span>React Boilerplate</span>
         <span
           style={Object.assign({}, styles.subTitle, this.state.showSubtitle ? styles.subTitleShown : styles.subTitleHidden)}
         >

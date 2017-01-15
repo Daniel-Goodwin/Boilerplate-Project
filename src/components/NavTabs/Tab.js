@@ -1,15 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router';
-import Permission from 'components/Permission';
 
 import styles from './styles';
 
 function Tab({ to, children, onClick, ...other }) {
   return (
-    <Permission
-      {...other}
-      onError={<div></div>}
-    >
       <Link
         onClick={() => onClick && onClick()}
         to={to}
@@ -17,7 +12,6 @@ function Tab({ to, children, onClick, ...other }) {
       >
         {children}
       </Link>
-    </Permission>
   );
 }
 

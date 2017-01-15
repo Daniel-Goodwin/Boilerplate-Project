@@ -1,7 +1,6 @@
 import React from 'react';
 import NavTabs, { Tab } from 'components/NavTabs';
 import ToolbarContainer from 'containers/ToolbarContainer';
-import Permission from 'components/Permission';
 
 function to(path = '') {
   if (!path) return '/';

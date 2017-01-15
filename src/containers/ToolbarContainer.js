@@ -2,26 +2,15 @@ import React, { Component } from 'react';
 
 class ToolbarContainer extends Component {
   render() {
-    const { primary2Color } = this.context.muiTheme.palette;
-
     return (
-      <div style={{ background: primary2Color }}>
+      <div>
         <div style={styles.container}>
-          <span style={styles.title}>{this.props.title}</span>
+          <span style={styles.title}>Nav?</span>
         </div>
-        {this.props.children}
       </div>
     );
   }
 }
-
-ToolbarContainer.contextTypes = {
-  muiTheme: React.PropTypes.object.isRequired,
-};
-
-ToolbarContainer.propTypes = {
-  children: React.PropTypes.any,
-};
 
 const styles = {
   container: {

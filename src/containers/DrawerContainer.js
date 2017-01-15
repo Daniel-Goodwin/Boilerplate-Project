@@ -62,13 +62,8 @@ function DrawerContainer({ isDesktop, isOpen, onClose }) {
         }
       }}
     >
+      <CreateHeader text={'Route Header'} />
       <CreateLink text={'Dashboard'} to="/dashboard" icon="dashboard" />
-      <CreateHeader text={'App'} />
-      <CreateLink text={'Notifications'} to="/notifications" icon="chat" />
-      <CreateLink text={'Devices & Accounts'} to="/devices" icon="perm device information" />
-      <CreateHeader text={'Manage'} />
-      <CreateLink text={'Users'} to="/users" icon="account circle" />
-      <CreateLink text={'Competition Ordering'} to="/ordering" icon="reorder" />
     </Drawer>
   );
 }

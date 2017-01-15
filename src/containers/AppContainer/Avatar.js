@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { default as MaterialAvatar } from 'material-ui/Avatar';
 import Popover from 'material-ui/Popover';
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
-import { signOut } from 'actions/UserActions';
 
 class Avatar extends Component {
 
@@ -66,10 +64,4 @@ class Avatar extends Component {
   }
 }
 
-function actions(dispatch) {
-  return {
-    signOut: () => dispatch(signOut()),
-  };
-}
-
-export default connect(null, actions)(Avatar);
+export default Avatar;
