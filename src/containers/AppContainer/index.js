@@ -1,93 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import S from 'string';
-import AppBar from 'material-ui/AppBar';
-import DrawerContainer from '../DrawerContainer';
 import ContentContainer from '../ContentContainer';
-import Avatar from './Avatar';
-
 
 class AppContainer extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      drawerOpen: props.isDesktop,
-      showSubtitle: false,
-      avatarContextOpen: false,
-    };
-  }
-
-  /**
-   * Listen for app wide scroll actions
-   */
-  componentDidMount() {
-    window.addEventListener('scroll', this.handleScroll);
-  }
-
-  /**
-   * Unsubscrive from scroll actions
-   */
-  componentWillUnmount() {
-    window.removeEventListener('scroll', this.handleScroll);
-  }
-
-  /**
-   * Handle scroll events
-   */
-  handleScroll = () => {
-    const yOffset = window.pageYOffset;
-
-    if (yOffset >= 48 && !this.state.showSubtitle) {
-      this.setState({
-        showSubtitle: true,
-      });
-    } else if (yOffset < 48 && this.state.showSubtitle) {
-      this.setState({
-        showSubtitle: false,
-      });
-    }
-  };
-
-  /**
-   * Toggle the drawer open/closed
-   */
-  toggleDrawerState() {
-    this.setState({
-      drawerOpen: !this.state.drawerOpen,
-    });
-  }
-
-  /**
-   *
-   * @returns {XML}
-   */
-  renderRightElements() {
-    return (
-      <div>
-        <Avatar />
-      </div>
-    )
-  }
-
-  /**
-   *
-   * @returns {XML}
-   */
-  renderTitle() {
-    const path = this.props.router.getCurrentLocation().pathname.split('/').filter(Boolean);
-    const title = path[0];
-
-    return (
-      <div>
-        <span>De Tipsters</span>
-        <span
-          style={Object.assign({}, styles.subTitle, this.state.showSubtitle ? styles.subTitleShown : styles.subTitleHidden)}
-        >
-          {title ? S(title).capitalize().s : 'Dashboard'}
-        </span>
-      </div>
-    );
   }
 
   /**
@@ -96,19 +14,6 @@ class AppContainer extends Component {
   render() {
     return (
       <div>
-        <AppBar
-          style={styles.appBar}
-          titleStyle={styles.titleStyle}
-          showMenuIconButton={!this.props.isDesktop}
-          onLeftIconButtonTouchTap={this.toggleDrawerState.bind(this)}
-          title={this.renderTitle()}
-          iconElementRight={this.renderRightElements()}
-        />
-        <DrawerContainer
-          isOpen={this.props.isDesktop ? true : this.state.drawerOpen}
-          isDesktop={this.props.isDesktop}
-          onClose={this.toggleDrawerState.bind(this)}
-        />
         <ContentContainer
           isDesktop={this.props.isDesktop}
         >

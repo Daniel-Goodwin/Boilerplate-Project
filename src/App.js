@@ -1,11 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import CircularProgress from 'material-ui/CircularProgress';
 import Measure from 'react-measure';
 import { updateWidth } from 'actions/WindowActions';
 import { syncUserAuthState, syncCustomer, syncUser, syncRole } from 'actions/SyncActions';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import { push } from 'react-router-redux';
 import { instances, createInstance } from 'services/firebase';
 
@@ -47,37 +44,16 @@ class App extends Component {
     const { user, children } = this.props;
 
     if (!user) {
-      // TODO Render Loading component
-      return (
-        <MuiThemeProvider>
-          <CircularProgress style={{ position: 'absolute', left: '50%', top: '50%' }} />
-        </MuiThemeProvider>
-      );
+     return <div>loading</div>;
     }
 
-    // TODO Handle better title/split up customer title at uppercase letters?
-
-    // TODO @Dan the input/select fields "ok" color is red still, doesnt look great with errors
-    // const muiThemed = getMuiTheme({
-    //   palette: {
-    //     primary1Color: branding.primaryDark,
-    //     primary2Color: branding.primary,
-    //     primary3Color: branding.primaryLight,
-    //     accent1Color: branding.secondary,
-    //     textColor: 'rgba(0, 0, 0, 0.54)',
-    //     alternateTextColor: '#fff',
-    //   }
-    // });
-
     return (
-      <MuiThemeProvider muiTheme={muiThemed}>
-        <Measure
-          whitelist={['width']}
-          onMeasure={this.props.updateWidth}
-        >
-          {children}
-        </Measure>
-      </MuiThemeProvider>
+      <Measure
+        whitelist={['width']}
+        onMeasure={this.props.updateWidth}
+      >
+        {children}
+      </Measure>
     );
   }
 }

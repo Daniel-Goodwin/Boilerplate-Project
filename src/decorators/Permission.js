@@ -3,28 +3,10 @@ import { connect } from 'react-redux';
 import deeps from 'deeps';
 
 const decorator = ({ roles = '', permissions = '' }) => {
-  console.log('decorate')
   return (ComposedComponent, DeniedComponent = null) => {
 
     const component = class extends Component {
-
-      validRole() {
-        console.log(this.props)
-        let isValid = false;
-
-        if (Array.isArray(roles)) {
-          roles.forEach((role) => {
-            if (role.toString() === this.props.roleValue.toString()) {
-              isValid = true;
-            }
-          });
-        } else if (roles.toString() === this.props.roleValue.toString()) {
-          isValid = true;
-        }
-
-        return isValid;
-      }
-
+      
       hasPermission() {
         let hasPermission = false;
 
@@ -44,7 +26,7 @@ const decorator = ({ roles = '', permissions = '' }) => {
       }
 
       render() {
-        if (!this.validRole() || !this.hasPermission()) {
+        if (!this.hasPermission()) {
           return DeniedComponent ? DeniedComponent : null;
         }
 
@@ -64,9 +46,7 @@ const decorator = ({ roles = '', permissions = '' }) => {
     }
 
 
-    const toReturn = connect(select)(component);
-    console.log(toReturn)
-    return toReturn;
+    return connect(select)(component);
   };
 };
 

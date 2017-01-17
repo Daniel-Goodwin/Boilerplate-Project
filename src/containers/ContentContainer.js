@@ -1,19 +1,11 @@
 import React from 'react';
 
-function ContentContainer({ isDesktop, children }) {
+function ContentContainer({ children }) {
   return (
-    <div
-      style={Object.assign(styles.container, { marginLeft: isDesktop ? 256 : 0 })}
-    >
+    <div>
       {children}
     </div>
   );
 }
-
-const styles = {
-  container: {
-    paddingTop: 48,
-  },
-};
 
 export default ContentContainer;

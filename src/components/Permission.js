@@ -8,27 +8,27 @@ class Permission extends Component {
    * Check if the user has a valid role
    * @returns {boolean}
    */
-  validRole() {
-    const roles = this.props.roles || this.props.role;
-
-    if (!roles) {
-      return true;
-    }
-
-    let isValid = false;
-
-    if (Array.isArray(roles)) {
-      roles.forEach((role) => {
-        if (role.toString() === this.props.roleValue.toString()) {
-          isValid = true;
-        }
-      });
-    } else if (roles.toString() === this.props.roleValue.toString()) {
-      isValid = true;
-    }
-
-    return isValid;
-  }
+  //validRole() {
+  //  const roles = this.props.roles || this.props.role;
+  //
+  //  if (!roles) {
+  //    return true;
+  //  }
+  //
+  //  let isValid = false;
+  //
+  //  if (Array.isArray(roles)) {
+  //    roles.forEach((role) => {
+  //      if (role.toString() === this.props.roleValue.toString()) {
+  //        isValid = true;
+  //      }
+  //    });
+  //  } else if (roles.toString() === this.props.roleValue.toString()) {
+  //    isValid = true;
+  //  }
+  //
+  //  return isValid;
+  //}
 
   /**
    * Check if they have a valid permission
@@ -61,7 +61,8 @@ class Permission extends Component {
    * @returns {*|null}
    */
   render() {
-    if (!this.validRole() || !this.hasPermission()) {
+    //if (!this.validRole() || !this.hasPermission()) {
+    if (!this.hasPermission()) {
       return this.props.onError || null;
     }
 

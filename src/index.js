@@ -10,7 +10,7 @@ import './base.css';
 import App from './App';
 import store from './store/setup';
 
-import Login from 'routes/login/views/LoginView';
+//import Login from 'routes/login/views/LoginView';
 import dashboard from 'routes/dashboard/routes';
 
 const history = syncHistoryWithStore(browserHistory, store);
@@ -20,7 +20,7 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
       <Route path="/">
-        <Route path="login" component={Login} />
+        {/*<Route path="login" component={Login} />*/}
         <Route component={App}>
           <Route component={AppContainer}>
             {dashboard}
